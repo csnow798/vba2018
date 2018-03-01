@@ -1,0 +1,6 @@
+Sub wb()
+    Workbooks.Add
+    MsgBox "代码所在的工作簿为:" & ThisWorkbook.Name
+    MsgBox "当前活动工作簿为:" & ActiveWorkbook.Name
+    ActiveWorkbook.Close savechanges:=False
+End Sub

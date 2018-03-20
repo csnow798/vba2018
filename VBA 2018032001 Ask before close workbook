@@ -1,0 +1,5 @@
+Private Sub Workbook_BeforeClose(Cancel As Boolean)
+    If MsgBox("Are you sure to close this workbook?", vbYesNo) = vbNo Then
+        Cancel = True
+    End If
+End Sub

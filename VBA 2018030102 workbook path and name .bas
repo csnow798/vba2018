@@ -1,4 +1,4 @@
-Attribute VB_Name = "ģ��3"
+Attribute VB_Name = "Ä£¿é3"
 Sub WbMsg()
     Range("B2") = ThisWorkbook.Name
     Range("B3") = ThisWorkbook.Path

@@ -1,0 +1,28 @@
+Private Sub Worksheet_Change(ByVal Target As Range)
+'Input data in start from C3, refer table start from I3.
+'After input, Column F will be select and waiting for input again.
+'Reference area will be in column I to F
+
+'If changed cell is not in Column C or changed more than 1 cell. Then Exit Sub.
+    If Application.Intersect(Target, Range("C3:C65536")) Is Nothing Or Target.Count > 1 Then
+        Exit Sub
+    End If
+    Dim i As Integer
+    i = 3
+    Do While Cells(i, "I").Value <> ""
+        'IF input is equals to reference area
+        If UCase(Target.Value) = Cells(i, "I").Value Then
+            'Disable Event (In case it will run again when name change from simple code into full name.
+            Application.EnableEvents = False
+                Target.Value = Cells(i, "I").Offset(0, 1).Value
+                Target.Offset(0, -1).Value = Date
+                Target.Offset(0, 1) = Cells(i, "I").Offset(0, 2).Value
+                Target.Offset(0, 2) = Cells(i, "I").Offset(0, 3).Value
+                Target.Offset(0, 3).Select
+            Application.EnableEvents = True
+            'Eable event
+            Exit Sub
+         End If
+         i = i + 1
+    Loop
+End Sub

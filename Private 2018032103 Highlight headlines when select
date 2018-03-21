@@ -1,0 +1,16 @@
+Private Sub Worksheet_SelectionChange(ByVal Target As Range)
+'Select one cell and highlight cells with same value
+'Data area should in B2:Q50
+    'Clear previous colors
+    Range("A2:Q50").Interior.ColorIndex = xlNone
+    Range("A1:Q1").Interior.ColorIndex = 15
+    If Target.Count > 1 Then
+        Set Target = Target.Cells(1)
+    End If
+    'If the selection is not in defult range, then exit Sub.
+    If Application.Intersect(Target, Range("B2:Q50")) Is Nothing Then
+        Exit Sub
+    End If
+    Range(Cells(Target.Row, "A"), Cells(Target.Row, "A")).Interior.ColorIndex = 2
+    Range(Cells(1, Target.Column), Cells(1, Target.Column)).Interior.ColorIndex = 2
+End Sub
